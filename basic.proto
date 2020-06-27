@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+service Test {
+    rpc SetUserInfo (UserInfo) returns (Status);
+    rpc GetUserInfo (UserInfo) returns (UserInfo);
+}
+
+service File {
+    rpc SetImage (stream Image) returns (Status);
+    rpc GetImage (UserInfo) returns (stream Image);
+}
+
+message UserInfo {
+    string userid = 1;
+    string name = 2;
+    string pwd = 3;
+}
+
+message Status {
+    string code = 1;
+    string status = 2;
+    string info = 3;
+}
+
+message Image {
+    bytes img = 1;
+}
